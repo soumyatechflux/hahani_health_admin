@@ -1,0 +1,55 @@
+.label-profile{
+  float: inline-start;
+}
+.Profile-Container{
+  margin: 0;
+}
+.profile-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid gray;
+}
+.profile-target{
+  background-color: white;
+  border-radius: 10px;
+  padding: 2%;
+  margin-top: 6%;
+  margin-bottom: 2%;
+}
+.text-BackTo{
+  float: left;
+  color: red;
+  cursor: pointer;
+}
+.proflie-butn{
+  background-color: red;
+  border: none;
+}
+.proflie-butn:hover{
+  background-color:rgb(199, 11, 11) ;
+}
+.pencil-profile{
+  cursor: pointer;
+  position: absolute;
+  top: 88%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+.profile-but-align{
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+
+}
+
+@media screen and (max-width: 768px){
+  .Profile-Container{
+    margin-top: 20%;
+  }
+  .pencil-profile{
+    left:65%;
+  }
+
+}

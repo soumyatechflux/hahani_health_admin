@@ -1,0 +1,122 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+ }
+ body{
+    background-color: #eaeaea;
+ }
+ .nav-sidebar{
+    /* height: 60px; */
+    background-color: #eaeaea; ;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    color: black;
+    overflow-x: hidden;
+ }
+ .nav-sidebar h2{
+    cursor: pointer;
+ }
+ .hanai-img{
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: right; */
+ }
+ 
+ .container-navbar{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+ }
+ 
+ .nav-sidebar ul{
+    list-style-type: none;
+    /* display: flex; */
+    align-items: center;
+    gap: 20px;
+ }
+ .nav-sidebar ul li{
+    cursor: pointer;
+    width: 100px;
+    border-radius: 7px;
+ }
+ .nav-sidebar ul li:hover{
+ background-color: red;
+ color: white;
+ text-align: center;
+ }
+ .nav-sidebar ul li svg{
+ font-size: 20px;
+ }
+ /* hanai-img  */
+ .hanai-img{
+   padding: 3px;
+   margin-left: -5px;
+ }
+  /* dropdown  */
+ .drop-down{
+    /* width: 15%; */
+    float: right;
+    list-style-type: none;
+    margin-right: 5px;
+    border-radius: 7px;
+ }
+ .drop-down ul{
+    list-style-type: none;
+    cursor: pointer;
+    text-align: center;
+    padding: 0 10px;
+    margin-top: 12px;
+ }
+ .drop-down ul li:hover{
+    background-color: red;
+    color: white;
+ }
+ 
+ .relative svg{
+    font-size: 190%;
+    margin-top: 15px;
+    cursor: pointer;
+    color: red;
+ }
+ .dropalign_nav{
+    padding: 0 10px;
+ }
+ 
+
+ 
+ /* button property  */
+ .btn-LogoutProfile{
+    background-color: red;
+    border: none;
+ }
+ .btn-LogoutProfile:hover{
+    background-color: rgb(199, 11, 11);
+ }
+ /* media query */
+ @media screen and (max-width: 768px) {
+    .sidebar-content{
+       width: 50px;
+       overflow-x: hidden;
+    }
+   .nav-option{
+       padding: 18px;
+    }
+    .logo{
+     gap: 10px;
+    }
+    .nav-sidebar ul li{
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    }
+    .nav-sidebar{
+       overflow-x: hidden;
+    }
+    .hanai-img{
+      width: 229px;
+      height: 60px;
+    }
+ }
+ 
+ 

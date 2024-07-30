@@ -1,0 +1,18 @@
+.signup-btn {
+
+    order: none;
+    outline: none;
+    height: 40px;
+    background: white;
+    width: 150px;
+    transition: .4s;
+    color: red;
+    margin: 15px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.signup-btn:hover {
+    background-color: red;
+    color: white;
+}

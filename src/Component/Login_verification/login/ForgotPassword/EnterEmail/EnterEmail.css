@@ -1,0 +1,19 @@
+.send-otp{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: white;
+    width: 150px;
+    transition: .4s;
+    color: red;
+    margin: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.send-otp:hover{
+    background-color: red;
+    color: white;
+}
+.btn-div{
+    text-align: center;
+}

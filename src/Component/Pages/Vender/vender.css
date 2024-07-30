@@ -1,0 +1,132 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-vender {
+  margin-left: 15%;
+}
+
+Button svg {
+  font-size: 20px;
+}
+
+/* for states button  */
+.btn-state-active {
+  width: 85px;
+  color: white;
+  /* border: 1px solid green; */
+  background-color: green;
+  padding: 1px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-state-inactive {
+  width: 85px;
+  color: white;
+  /* border: 1px solid red; */
+  background-color: red;
+  padding: 1px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-state-active:hover {
+  background-color: rgb(12, 107, 12);
+  color: white;
+}
+
+.btn-state-inactive:hover {
+  background-color: rgb(199, 11, 11);
+  color: white;
+}
+.all-buttons{
+  background-color: red;
+  border: none;
+}
+.all-buttons:hover{
+  background-color: rgb(199, 11, 11);
+}
+
+/* for text ckass */
+.text-class{
+  margin: 5px;
+}
+
+/* for add button  */
+.btn-class{
+  margin: 5px;
+}
+.top-margin-heading{
+  margin-top: 7%;
+}
+.table-resp{
+  margin-top: 20px;
+}
+.table-resp td{
+  padding: 10px;
+}
+  @media screen and (max-width: 480px) {
+    .container-vender {
+      margin-left: 9%;
+      margin-top: 5%;
+    }
+    .top-margin-heading{
+      margin-top: 20%;
+    }
+  
+    .action-users {
+      display: flex;
+    }
+    .table-resp{
+      width: 88%;
+    }
+    .text-class{
+      font-size: 22px;
+      /* margin-top: 10px; */
+      margin: 10px;
+    }
+    .add-btn{
+      margin-top: 10px;
+      margin-right: 32px;
+    }
+  
+  }
+  
+  @media screen and (min-width:481px) and (max-width: 768px) {
+    .container-vender{
+      margin-left: 50px;
+      /* max-width: 100%; */
+      width: calc(100%-50px);
+      /* overflow-y: scroll; */
+    }
+    .top-margin-heading{
+      margin-top: 11%;
+    }
+     
+    .action-users {
+      display: flex;
+    }
+    
+  }
+
+  @media screen and (min-width:773px) and (max-width: 1200px) {
+    .container-vender{
+      margin-left: 190px;
+      width: 80%;
+      /* max-width: 100%; */
+      width: calc(100%-50px);
+      /* overflow-y: scroll; */
+    }
+    .top-margin-heading{
+      margin-top: 12%;
+    }
+    .action-users {
+      display: flex;
+    }
+    .table-responsive {
+      width: 100%;
+  }
+  
+  }
+  

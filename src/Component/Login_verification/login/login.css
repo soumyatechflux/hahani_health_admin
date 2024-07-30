@@ -1,0 +1,118 @@
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.right-side{
+    background-color:  #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10%;
+}
+.logo-img{
+    width: 90%;
+}
+.left-side{
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-field{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.login-header{
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 35px;
+    color: red;
+    font-family: helvetica;
+    letter-spacing: 2px;
+}
+.input-field{
+    flex-direction: column;
+    position: relative;
+    padding: 0 10px 0 10px;
+}
+.input-mail{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    margin-bottom: 20px;
+    color: #40414a;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+}
+.input-pass{
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    outline: none;
+    /* margin-bottom: 20px; */
+    color: #40414a;
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+}
+.input-submit{
+    display: flex;
+    justify-content: center
+}
+.submit{
+    border: none;
+    outline: none;
+    height: 40px;
+    background: white;
+    width: 150px;
+    transition: .4s;
+    color: red;
+    margin: 15px;
+}
+.submit:hover{
+    background-color: red;
+    color: white;
+}
+span a{
+    text-decoration: none;
+    font-weight: 500;
+    color: red;
+    transition: .5s;
+}
+span a:hover{
+    text-decoration: underline;
+    color: #000;
+}
+.para{
+    text-decoration: none;
+    font-size: 10px;
+    color: red;
+    transition: .5s;
+    padding-left: 70%;
+}
+.login-sing{
+    font-size: 15px;
+    padding: 15px;
+}
+.error{
+    color: red;
+    font-size: 10px;
+    
+}
+@media only screen and (max-width: 768px) {
+    .logo-img {
+      width: 70%;
+    }
+  
+    .col-md-6 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  
+    .submit {
+      width: 100%;
+    }
+  }
