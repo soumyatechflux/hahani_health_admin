@@ -68,7 +68,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     position: fixed;
-    top: 60px;
+    top: 66px;
  }
  .sidebar-content::-webkit-scrollbar{
     display: none;
@@ -181,7 +181,7 @@
        overflow-x: hidden;
     }
    .nav-option{
-       padding: 10px;
+       padding: 6px;
     }
     .logo{
      gap: 10px;
@@ -194,6 +194,9 @@
     .nav-sidebar{
        overflow-x: hidden;
     }
+    .sidebar-content{
+      top: 60px;
+   }
  }
  
  

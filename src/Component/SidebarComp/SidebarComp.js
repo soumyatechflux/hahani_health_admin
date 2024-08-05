@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { MdDashboardCustomize } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
@@ -6,7 +6,19 @@ import { FaUserCog } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import './sidebarComp.css';
 
+
+
 const SidebarComp = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
     const location = useLocation();
   return (
     <div>
@@ -15,7 +27,8 @@ const SidebarComp = () => {
           <Link to="/dashboard" className="no-underline">
             <div className={`nav-option option1 ${location.pathname === '/dashboard' ? 'active' : ''}`}>
               <MdDashboardCustomize />
-              <h5 className='h5-sidebar'>Dashboard</h5>
+              {/* <h5 className='h5-sidebar'>Dashboard</h5> */}
+              {!isMobile && <span>Dashboard</span>}
             </div>
           </Link>
 

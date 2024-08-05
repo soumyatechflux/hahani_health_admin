@@ -55,7 +55,7 @@
  }
   /* dropdown  */
  .drop-down{
-    /* width: 15%; */
+    width: 10%;
     float: right;
     list-style-type: none;
     margin-right: 5px;
@@ -100,7 +100,7 @@
        overflow-x: hidden;
     }
    .nav-option{
-       padding: 18px;
+       padding: 6px;
     }
     .logo{
      gap: 10px;
@@ -116,6 +116,12 @@
     .hanai-img{
       width: 229px;
       height: 60px;
+    }
+    .drop-down{
+      width: 33%;
+    }
+    .hanai-logo-img{
+      width: 85%;
     }
  }
  

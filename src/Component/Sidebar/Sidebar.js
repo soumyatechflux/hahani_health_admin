@@ -10,6 +10,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import hanai_logo from './../images/hanai-logo.png';
 
+
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -37,12 +38,15 @@ const Sidebar = () => {
   };
 
   const handleLogoutConfirm = () => {
+    console.log('Clearing local storage...');
+    localStorage.clear();
+    console.log('Navigating to login page...');
+    navigate("/");
     setShowLogoutModal(false);
-    // Implement your logout logic here
-    console.log('User logged out');
   };
 
   return (
+   
     <div className='container-navbar'>
       <nav className='col nav-sidebar bg-light'>
         <div className='hanai-img'>

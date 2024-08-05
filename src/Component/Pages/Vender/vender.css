@@ -68,7 +68,7 @@ Button svg {
 }
   @media screen and (max-width: 480px) {
     .container-vender {
-      margin-left: 9%;
+      margin-left: 12%;
       margin-top: 5%;
     }
     .top-margin-heading{
@@ -92,7 +92,11 @@ Button svg {
     }
   
   }
-  
+  @media(max-width:768px){
+    .table-padding-right{
+      padding-right: 40px;
+    }
+  }
   @media screen and (min-width:481px) and (max-width: 768px) {
     .container-vender{
       margin-left: 50px;
@@ -127,6 +131,7 @@ Button svg {
     .table-responsive {
       width: 100%;
   }
+
   
   }
   
