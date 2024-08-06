@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_HANAI_ADMIN_APPLICANT_PORTAL_BASE_API_URL,
+  baseURL: process.env.REACT_APP_AQATO_AGENT_APPLICANT_PORTAL_BASE_API_URL,
   timeout: 30000,
 });
 
 // Create a new Axios instance without setting the Authorization header
 const axiosInstanceNoAuth = axios.create({
-  baseURL: process.env.REACT_APP_HANAI_ADMIN_APPLICANT_PORTAL_BASE_API_URL,
+  baseURL: process.env.REACT_APP_AQATO_AGENT_APPLICANT_PORTAL_BASE_API_URL,
   timeout: 30000,
 });
 
