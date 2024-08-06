@@ -44,7 +44,7 @@ const ConfirmUserStatusModal = ({ show, handleCancel, handleConfirm, userId , ha
       </Modal.Header>
       <Modal.Body>
         <p>Are you sure you want to change the user status?</p>
-        {loading && <p>Loading...</p>}
+        {/* {loading && <p>Loading...</p>} */}
         {error && <p>Error: {error}</p>}
       </Modal.Body>
       <Modal.Footer>

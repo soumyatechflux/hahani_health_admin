@@ -91,14 +91,14 @@ const AddVendorModal = ({ handleGetVendors,show, handleClose, newData, setNewDat
               onChange={(e) => setNewData({ ...newData, type: e.target.value })}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formCreatedAtCreate">
+          {/* <Form.Group className="mb-3" controlId="formCreatedAtCreate">
             <Form.Label>Created At</Form.Label>
             <Form.Control
               type="date"
               value={newData.createdAt}
               onChange={(e) => setNewData({ ...newData, createdAt: e.target.value })}
             />
-          </Form.Group>
+          </Form.Group> */}
         </Form>
       </Modal.Body>
       <Modal.Footer>

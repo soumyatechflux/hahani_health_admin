@@ -68,7 +68,7 @@ const EditUserModal = ({ show, handleClose, userId, editData, setEditData, onUse
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Form.Group className="mb-3" controlId="formSrNoEdit">
+          {/* <Form.Group className="mb-3" controlId="formSrNoEdit">
             <Form.Label>Sr No</Form.Label>
             <Form.Control
               type="number"
@@ -76,7 +76,7 @@ const EditUserModal = ({ show, handleClose, userId, editData, setEditData, onUse
               value={editData.id || ''}
               onChange={(e) => setEditData({ ...editData, id: e.target.value })}
             />
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group className="mb-3" controlId="formNameEdit">
             <Form.Label>Name</Form.Label>
             <Form.Control
@@ -104,14 +104,18 @@ const EditUserModal = ({ show, handleClose, userId, editData, setEditData, onUse
               onChange={(e) => setEditData({ ...editData, password: e.target.value })}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formCreatedAtEdit">
+
+
+          {/* <Form.Group className="mb-3" controlId="formCreatedAtEdit">
             <Form.Label>Created At</Form.Label>
             <Form.Control
               type="date"
               value={editData.createdAt?.split('T')[0] || ''} // Ensure the format is YYYY-MM-DD
               onChange={(e) => setEditData({ ...editData, createdAt: e.target.value })}
             />
-          </Form.Group>
+          </Form.Group> */}
+
+
         </Form>
       </Modal.Body>
       <Modal.Footer>

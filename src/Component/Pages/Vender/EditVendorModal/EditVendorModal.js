@@ -75,7 +75,7 @@ const EditVendorModal = ({handleGetVendors, show, handleClose, vendorId, editDat
           <div>Loading...</div>
         ) : (
           <Form>
-            <Form.Group className="mb-3" controlId="formSrNoEdit">
+            {/* <Form.Group className="mb-3" controlId="formSrNoEdit">
               <Form.Label>Sr No</Form.Label>
               <Form.Control
                 type="number"
@@ -83,7 +83,7 @@ const EditVendorModal = ({handleGetVendors, show, handleClose, vendorId, editDat
                 value={editData.id || ''}
                 onChange={(e) => setEditData({ ...editData, id: e.target.value })}
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group className="mb-3" controlId="formNameEdit">
               <Form.Label>Name</Form.Label>
               <Form.Control
@@ -129,14 +129,14 @@ const EditVendorModal = ({handleGetVendors, show, handleClose, vendorId, editDat
                 onChange={(e) => setEditData({ ...editData, venue: e.target.value })}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formCreatedAtEdit">
+            {/* <Form.Group className="mb-3" controlId="formCreatedAtEdit">
               <Form.Label>Created At</Form.Label>
               <Form.Control
                 type="date"
                 value={editData.createdAt?.substring(0, 10) || ''} // Format date to YYYY-MM-DD
                 onChange={(e) => setEditData({ ...editData, createdAt: e.target.value })}
               />
-            </Form.Group>
+            </Form.Group> */}
           </Form>
         )}
       </Modal.Body>

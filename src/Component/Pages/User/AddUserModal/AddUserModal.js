@@ -73,7 +73,9 @@ const AddUserModal = ({ show, handleClose, newData, setNewData, handleSave, hand
               required
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formCreatedAtCreate">
+
+
+          {/* <Form.Group className="mb-3" controlId="formCreatedAtCreate">
             <Form.Label>Created At</Form.Label>
             <Form.Control
               type="date"
@@ -81,7 +83,9 @@ const AddUserModal = ({ show, handleClose, newData, setNewData, handleSave, hand
               onChange={(e) => setNewData({ ...newData, createdAt: e.target.value })}
               required
             />
-          </Form.Group>
+          </Form.Group> */}
+
+
           {error && <p className="text-danger">{error}</p>}
         </Form>
       </Modal.Body>
