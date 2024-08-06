@@ -103,7 +103,7 @@ const Vender = () => {
     }
   };
 
-  const [getVender, setGetVender] = useState([]);
+  // const [getVender, setGetVender] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -253,7 +253,15 @@ const Vender = () => {
         </div>
       </div>
 
-      <EditVendorModal show={showEdit} handleClose={handleCloseEdit} editData={editData} setEditData={setEditData} handleSaveEdit={handleSaveEdit} />
+        <EditVendorModal
+        show={showEdit}
+        handleClose={handleCloseEdit}
+        vendorId={editData.id}
+        editData={editData}
+        setEditData={setEditData}
+        onVendorUpdated={handleSaveEdit}
+      />
+
       <AddVendorModal show={showCreate} handleClose={handleCloseCreate} newData={newData} setNewData={setNewData} handleAddVender={handleAddVender} />
       <VendorStatusModal show={showConfirm} handleConfirm={handleConfirmStatusChange} handleCancel={handleCancelChange} />
       <VendorDeleteModal show={showDeleteConfirm} handleDeleteVendor={handleDeleteVendor} handleGetVendors={handleGetVendors} handleClose={() => setShowDeleteConfirm(false)} vendorId={currentVendorId} />

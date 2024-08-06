@@ -106,7 +106,7 @@ const Bill = () => {
                   <tr key={item.id}>
                     <td style={{ padding: '6px' }}>{index + 1}</td>
                     <td style={{ padding: '6px' }}>{item.bill_id}</td>
-                    <td style={{ padding: '6px' }}>{item.amout}</td>
+                    <td style={{ padding: '6px' }}>{item.amount}</td>
                     <td style={{ textWrap: 'nowrap', padding: '6px' }}>{new Date(item.bill_date).toLocaleDateString()}</td>
                     <td className="action-users" style={{ padding: '6px' }}>
                       <Button
