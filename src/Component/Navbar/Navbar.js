@@ -2,7 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IoMdContact } from "react-icons/io";
 import { Modal, Button } from 'react-bootstrap';
-import hanai_logo from './../images/hanai-logo.png';
+import hanai_logo from './../images/Modern Initial Font Logo.png';
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";

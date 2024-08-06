@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import longlogo from './longlogo.PNG';
-import smalllogo from './small.PNG';
+import longlogo from '../images/Etern logo.jpg';
+import smalllogo from '../images/Logo.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LoginOtpAPI } from './../../api.js'; // Adjust the import path to where LoginAPI is located
 import { encryptData } from "../CRYPTO/crypto";

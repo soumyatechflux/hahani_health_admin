@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {encryptData} from './../../CRYPTO/crypto';
-import longlogo from "./longlogo.PNG";
+import longlogo from "../../images/Etern logo.jpg";
 import { toast } from "react-toastify";
 import "./login.css";
 

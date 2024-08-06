@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import hanai_logo from './../images/hanai-logo.png';
+import hanai_logo from './../images/Modern Initial Font Logo.png';
 
 
 const Sidebar = () => {
