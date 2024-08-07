@@ -1,6 +1,12 @@
-/* .App {
-  text-align: center;
-} */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+.App {
+  /* text-align: center; */
+  font-family: Arial, Helvetica, sans-serif;
+ 
+}
 
 .App-logo {
   height: 40vmin;
@@ -27,11 +33,11 @@
 .App-link {
   color: #61dafb;
 }
+
 .App{
   width: 100%;
   overflow: hidden;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

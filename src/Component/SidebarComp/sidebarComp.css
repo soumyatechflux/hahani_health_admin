@@ -68,7 +68,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     position: fixed;
-    top: 60px;
+    top: 66px;
  }
  .sidebar-content::-webkit-scrollbar{
     display: none;
@@ -83,21 +83,19 @@
  }
  
  .nav-option{
-    display: flex;
-    /* align-items: center; */
-    padding: 10px 15px;
-    gap: 5px;
-    width: 180px;
-    border-radius: 7px;
-    color: black;
-    margin: 15px 10px;
-  
+   display: flex;
+   /* align-items: center; */
+   padding: 10px 15px;
+   gap: 5px;
+   width: 180px;
+   border-radius: 7px;
+   color: black;
+   margin: 15px 10px;
  }
  
  .nav-option:hover {
     background-color:red; 
     color: white; 
-
   }
   
   .nav-option:hover svg {
@@ -114,6 +112,9 @@
  .no-underline:hover {
     text-decoration: none;
   }
+  .h5-sidebar{
+   margin-bottom: 0;
+ }
  
   /* dropdown  */
  .drop-down{
@@ -143,9 +144,6 @@
  }
  .dropalign_nav{
     padding: 0 10px;
- }
- .h5-sidebar{
-   margin-bottom: 0;
  }
  
  /* when i open any page then this page name in sidebar remains hover in red color  */
@@ -183,7 +181,7 @@
        overflow-x: hidden;
     }
    .nav-option{
-       padding: 10px;
+       padding: 6px;
     }
     .logo{
      gap: 10px;
@@ -196,6 +194,9 @@
     .nav-sidebar{
        overflow-x: hidden;
     }
+    .sidebar-content{
+      top: 60px;
+   }
  }
  
  

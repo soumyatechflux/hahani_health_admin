@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { FaPencilAlt, FaTimes } from 'react-icons/fa'; // Import FaTimes for the cross icon
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../../Navbar/Navbar';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -27,8 +28,10 @@ const Profile = () => {
   };
 
   return (
+   <>
+    <Navbar/>
     <div className="container-fluid Profile-Container">
-      <div className="row justify-content-center " style={{ margin: '3%' }}>
+      <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6 profile-target">
           <div className="profilepage-container text-center position-relative">
             <div className="icon-form mb-4 position-relative">
@@ -88,6 +91,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

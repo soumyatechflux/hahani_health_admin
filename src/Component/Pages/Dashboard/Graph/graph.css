@@ -13,7 +13,13 @@
     display: flex;
     justify-content: space-between;
   }
-  
+  .cell {
+    /* padding: 0px 35px; */
+  }
+  /* .container {
+    width: 80%;
+    margin: 15px auto;
+  } */
   .sd-line{
     --line: var(--_line-bottom-color) var(--_line-start), #f70707 var(--_line-start), #fa0404 var(--_line-end), white 0%;
     --_point-color: var(--point-color, #f80000);
@@ -39,7 +45,16 @@
     --area-color: #6d81f04d;
     --area-top-color: transparent;
 }
-
+/* .graphhhh{
+    border: transparent;
+    background-color: white;
+    border-radius: 20px;
+    width: 45%;
+    margin: 25px 12px;
+    margin-bottom: 10px;
+    height: 100%;
+    padding: 30px;
+} */
 .graph-row{
     justify-content: space-between;
 }
@@ -166,7 +181,28 @@
     .Activity-level-text{
         margin-top: 20px;
     }
-    
+    .graphhhh{
+    /* min-width: 110%;
+    margin-right: 25px;
+    height: 100%;
+    padding: 30px;
+    margin-bottom: 10px; */
+    /* border: transparent;
+    background-color: white;
+    border-radius: 20px; */
+    /* width: 45%; */
+    /* margin: 25px 12px;
+    margin-bottom: 10px; */
+    /* height: 100%; */
+    /* padding: 30px; */
+
+    /* -------------- */
+    /* min-width: 93%;
+    margin-right: 25px;
+    height: 100%;
+    padding: 30px;
+    margin-bottom: 10px; */
+    }
     .row-head{
         display: none;
     }
@@ -204,7 +240,9 @@
     font-size: 25px;
     cursor: pointer;
 }
+.take-lab-test-btn{
 
+}
 .take-lab-test-btn {
     padding: 10px 20px;
     border: none;
@@ -259,7 +297,7 @@ border-radius: 5px;
     .container-graph{
         width: 40vh;
         height: 280px;
-        margin-left: 21%;
+        margin-left: 22%;
         margin-bottom: 10%;
         
         }
@@ -276,7 +314,7 @@ border-radius: 5px;
     .container-graph{
         width: 38vh;
         height: 298px;
-        margin-left: 15%;
+        margin-left: 14%;
         margin-bottom: 5%;
         
         }
@@ -315,4 +353,31 @@ border-radius: 5px;
         height: 100%;
     }
   }
-  
+  @media screen and (min-width:478px) and (max-width: 580px) {
+    .container-graph{
+        position: relative;
+        width: 50vh;
+        height: 300px;
+        margin-left: 20%;
+        
+        }
+    .cell{
+        margin-top: 30%;
+        width: 100%;
+        height: 100%;
+    }
+  }
+  /* @media screen and (min-width:569px) and (max-width: 780x) {
+    .container-graph{
+        position: relative;
+        width: 10vh;
+        height: 200px;
+        margin-left: 25%;
+        
+        }
+    .cell{
+        margin-top: 30%;
+        width: 100%;
+        height: 100%;
+    }
+  } */

@@ -1,43 +1,16 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import './EnterEmail.css';
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import {ForgotPasswordEnterEmailAPI} from "./../../../../../api";
-
-const EnterEmail = ({ show, handleClose ,onEmailSubmit}) => {
+import './EnterEmail.css'
+const EnterEmail = ({ show, handleClose, onEmailSubmit }) => {
     const [email, setEmail] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-
-        // onEmailSubmit(email);
-
-
-        setIsLoading(true);
-
-        try {
-            const response = await ForgotPasswordEnterEmailAPI({ email });
-            if (response?.data && response?.data?.response === true) {
-                toast.success("OTP sent to your email.");
-                // handleClose();
-                onEmailSubmit(email);
-            } else {
-                toast.error(response?.data?.error_msg || "Failed to send OTP. Please try again.");
-            }
-        } catch (error) {
-            console.error("Error sending OTP:", error);
-            toast.error("An error occurred while sending OTP. Please try again.");
-        } finally {
-            setIsLoading(false);
-        }
-
-
+        onEmailSubmit(email);
     };
 
     return (
-        <Modal show={show} onHide={handleClose} centered>
+        <Modal show={show} onHide={handleClose} centered backdrop="static">
             <Modal.Header closeButton>
                 <Modal.Title>Forgot Password</Modal.Title>
             </Modal.Header>
@@ -54,10 +27,11 @@ const EnterEmail = ({ show, handleClose ,onEmailSubmit}) => {
                         />
                     </Form.Group>
                     <div className='btn-div'>
-                        <Button type="submit" className='send-otp' disabled={isLoading}>
-                            {isLoading ? 'Sending...' : 'Send OTP'}
-                        </Button>
+                        <button  type="submit" className='send-otp'>
+                            Send OTP
+                        </button>
                     </div>
+                   
                 </Form>
             </Modal.Body>
         </Modal>
