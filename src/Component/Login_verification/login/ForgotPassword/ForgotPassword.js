@@ -40,10 +40,10 @@ const ForgotPasswordFlow = ({ onClose }) => {
         <EnterEmail show={showModal} handleClose={handleClose} onEmailSubmit={handleEmailSubmit} />
       )}
       {step === 2 && (
-        <EnterOtp show={showModal} handleClose={handleClose} onOTPSubmit={handleOTPSubmit} />
+        <EnterOtp show={showModal} handleClose={handleClose} onOTPSubmit={handleOTPSubmit} email={email}/>
       )}
       {step === 3 && (
-        <ResetPassword show={showModal} handleClose={handleClose} onPasswordReset={handlePasswordReset} />
+        <ResetPassword show={showModal} handleClose={handleClose} onPasswordReset={handlePasswordReset} email={email}/>
       )}
     </div>
   );

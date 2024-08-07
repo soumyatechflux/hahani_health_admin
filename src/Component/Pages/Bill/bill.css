@@ -1,8 +1,8 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
  }
-.container-Bil {
-    margin-left: 15%;
+.bill-main-container {
+    margin-left: 14%;
 }
 Button svg{
     font-size: 20px;
@@ -17,7 +17,7 @@ Button svg{
 
 
 @media screen and (max-width: 480px) {
-  .container-Bil {
+    .bill-main-container {
       margin-left: 12%;
       margin-top: 5%;
     }
@@ -38,7 +38,7 @@ Button svg{
   }
   
   @media screen and (min-width:481px) and (max-width: 767px) {
-    .container-Bil {
+    .bill-main-container {
       margin-left: 50px;
       /* max-width: 100%; */
       width: calc(100%-50px);
@@ -54,7 +54,7 @@ Button svg{
   }
   }
   @media screen and (min-width:773px) and (max-width: 1200px) {
-    .container-Bil{
+    .bill-main-container {
       margin-left: 190px;
       width: 80%;
       /* max-width: 100%; */

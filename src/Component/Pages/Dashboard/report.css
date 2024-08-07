@@ -1,4 +1,135 @@
+.search-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+}
 
+.search-bar-rep{
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30%;
+    height: 40px;
+}
+
+.search-bar-rep button {
+    background: #f9f9f9;
+    border: none;
+    padding: 8px;
+}
+
+.search-bar-rep input[type="text"] {
+    border: none;
+    padding: 8px;
+    flex-grow: 1;
+    margin-right: 4px;
+    width: 30%;
+    background: #f9f9f9 !important;
+}
+.circle{
+    background: red;
+    color: white;
+    width: 54px;
+    height: 52px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.circle-radius{
+    border: 1px solid red;
+    border-radius: 50%;
+    padding: 3px;
+}
+.css-1hs7rf2-JoyCircularProgress-progress {
+--CircularProgress-progressColor: #f80000 !important;
+}
+.progress-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+.diseases{
+    display: flex;
+    
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.disease{
+    display: flex;
+}
+.info-disease,.disease-img{
+    background-color: #ffffff;
+    padding: 4px;
+
+}
+.info-disease{
+    width: 125px;
+}
+.name,.percentage,.is-match{
+    margin-bottom: 0rem !important;
+}
+
+.percentage{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.name,.is-match{
+    font-size: 12px;
+    font-weight: 600;
+}
+.disease-img {
+    display: flex;
+    /* flex-wrap: nowrap; */
+    /* justify-content: flex-start; */
+    align-items: center;
+    
+}
+.disease-image{
+    width: 43px;
+    height: 36px;
+}
+
+.image-radius{
+    border: 2px solid red;
+    padding: 8px;
+    border-radius: 50%;
+    /* width: 8px; */
+}
+
+.info-disease-diff,.disease-img-diff{
+    background-color: #f47575;
+    padding: 4px;
+
+}
+.disease-img-diff {
+    display: flex;
+    align-items: center;
+}
+
+.percentage,.is-match{
+    text-align: center;
+}
+.extra{
+    visibility: hidden;
+}
+
+.extra-space{
+    position: relative;
+    left: 25%;
+}
+
+.text_{
+    
+        margin-bottom: 0rem;
+        font-size: 7px;
+        font-weight: 600;
+}
 /* graphhhh */
 #chart1, #chart2 {
     width: 100%;
@@ -13,7 +144,13 @@
     display: flex;
     justify-content: space-between;
   }
+   
+    /* padding: 0px 35px; */
   
+  /* .container {
+    width: 80%;
+    margin: 15px auto;
+  } */
   .sd-line{
     --line: var(--_line-bottom-color) var(--_line-start), #f70707 var(--_line-start), #fa0404 var(--_line-end), white 0%;
     --_point-color: var(--point-color, #f80000);
@@ -39,7 +176,16 @@
     --area-color: #6d81f04d;
     --area-top-color: transparent;
 }
-
+/* .graphhhh{
+    border: transparent;
+    background-color: white;
+    border-radius: 20px;
+    width: 45%;
+    margin: 25px 12px;
+    margin-bottom: 10px;
+    height: 100%;
+    padding: 30px;
+} */
 .graph-row{
     justify-content: space-between;
 }
@@ -166,7 +312,28 @@
     .Activity-level-text{
         margin-top: 20px;
     }
-    
+    .graphhhh{
+    /* min-width: 110%;
+    margin-right: 25px;
+    height: 100%;
+    padding: 30px;
+    margin-bottom: 10px; */
+    /* border: transparent;
+    background-color: white;
+    border-radius: 20px; */
+    /* width: 45%; */
+    /* margin: 25px 12px;
+    margin-bottom: 10px; */
+    /* height: 100%; */
+    /* padding: 30px; */
+
+    /* -------------- */
+    /* min-width: 93%;
+    margin-right: 25px;
+    height: 100%;
+    padding: 30px;
+    margin-bottom: 10px; */
+    }
     .row-head{
         display: none;
     }
@@ -241,78 +408,17 @@
 }
 
 
-/* container-graph  */
-.container-graph{
-position: relative;
-width: 70vh;
-height: 400px;
-margin-top: 10%;
-margin-bottom: 2%;
-margin-left: 2px;
-background-color: white;
-border-radius: 5px;
 
-
+@media(max-width:1000px){
+    .diseases{
+        display: flex;
+         flex-direction: column;
+         align-content: space-between;
+    }
+    .disease{
+        margin-bottom: 20px;
+    }
+    .info-disease{
+        width: 100%;
+    }
 }
-
-@media screen and (max-width: 380px) {
-    .container-graph{
-        width: 40vh;
-        height: 280px;
-        margin-left: 21%;
-        margin-bottom: 10%;
-        
-        }
-    .cell{
-        margin-top: 20%;
-        width: 100%;
-        height: 100%;
-    }
-  
-  }
-  
-
-@media screen and (min-width: 380px) and (max-width: 480px) {
-    .container-graph{
-        width: 38vh;
-        height: 298px;
-        margin-left: 15%;
-        margin-bottom: 5%;
-        
-        }
-    .cell{
-        margin-top: 20%;
-        width: 100%;
-        height: 100%;
-    }
-  
-  }
-  
-  @media screen and (min-width:700px) and (max-width: 780px) {
-    .container-graph{
-        width: 29vh;
-        height: 290px;
-        margin-left: -70%;
-        
-        }
-    .cell{
-        margin-top: 20%;
-        width: 100%;
-        height: 100%;
-    }
-  }
-  @media screen and (min-width:773px) and (max-width: 1200px) {
-    .container-graph{
-        position: relative;
-        width: 20vh;
-        height: 250px;
-        margin-left: 43%;
-        
-        }
-    .cell{
-        margin-top: 30%;
-        width: 100%;
-        height: 100%;
-    }
-  }
-  

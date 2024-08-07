@@ -1,5 +1,5 @@
 import axios from "axios";
-import { decryptData } from "./Component/CRYPTO/crypto.js";
+import { decryptData } from "./Component/CRYPTO/crypto";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -35,7 +35,7 @@ axiosInstance.interceptors.response.use(
 );
 
 export function authorizeMe() {
-  const encryptedToken = localStorage.getItem("encryptedTokenForAdminOfHanaiHealth");
+  const encryptedToken = localStorage.getItem("encryptedTokenForVendorOfHanaiHealth");
 
   const token = decryptData(encryptedToken);
 
@@ -52,19 +52,30 @@ axiosInstance.interceptors.request.use(async (config) => {
   return config;
 });
 
+
+
+
 export async function LoginAPI(data) {
   try {
-    const response = await axiosInstanceNoAuth.post(`/adminauth/login`,data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/login`,
+      data
+    );
 
     return response;
   } catch (error) {
     throw error;
   }
 }
+
+
 
 export async function LoginOtpAPI(data) {
   try {
-    const response = await axiosInstanceNoAuth.post( `/adminauth/verifyotp`, data);
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/verify-otp`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -73,9 +84,14 @@ export async function LoginOtpAPI(data) {
 }
 
 
-export async function AddVenderAPI(data) {
+
+
+export async function ForgotPasswordEnterEmailAPI(data) {
   try {
-    const response = await axiosInstance.post(`/admin/addvendor`, data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/forgotpass`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -85,11 +101,12 @@ export async function AddVenderAPI(data) {
 
 
 
-export async function GetVenderAPI(data) {
-  console.log("hhakhsdajh")
+export async function ForgotPasswordEnterOtpAPI(data) {
   try {
-    console.log("hjh")
-    const response = await axiosInstance.get(`/admin/getvendors`, data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/forgototpverify`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -97,11 +114,15 @@ export async function GetVenderAPI(data) {
   }
 }
 
-export async function GetUserAPI(data) {
-  
+
+
+
+export async function ForgotPasswordEnterNewPasswordAPI(data) {
   try {
-    
-    const response = await axiosInstance.get(`/admin/getusers`, data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/changepassword`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -109,11 +130,15 @@ export async function GetUserAPI(data) {
   }
 }
 
-export async function GetVenderAPIById(data) {
-  
+
+
+
+export async function SignupAPI(data) {
   try {
-    
-    const response = await axiosInstance.post(`/admin/getvendorbyid`, data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/signup`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -121,9 +146,14 @@ export async function GetVenderAPIById(data) {
   }
 }
 
-export async function EditVenderAPI(data) {
+
+
+export async function SignUpOtpAPI(data) {
   try {
-    const response = await axiosInstance.post(`/admin/editvendor`, data );
+    const response = await axiosInstanceNoAuth.post(
+      `/vendorauth/verifysignupotp`,
+      data
+    );
 
     return response;
   } catch (error) {
@@ -132,166 +162,29 @@ export async function EditVenderAPI(data) {
 }
 
 
-export async function DeleteVendorAPI(data) {
+export async function LabReportAPI() {
   try {
-    const response = await axiosInstance.post(`/admin/deletevendor`, data );
-
+    const response = await axiosInstance.get(
+      `/vendor/labreport`,
+    );
     return response;
   } catch (error) {
     throw error;
   }
 }
 
-export async function DeleteUserAPI(data) {
+
+export async function BillReportAPI() {
   try {
-    const response = await axiosInstance.post(`/admin/deleteuser`, data );
+    const response = await axiosInstance.get(
+      `/vendor/billreport`,
+    );
 
     return response;
   } catch (error) {
     throw error;
   }
 }
-
-
-
-export async function GetUserAPIById(data) {
-  
-  try {
-    
-    const response = await axiosInstance.post(`/admin/getuserbyid`, data );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function AddUserAPI(data) {
-  try {
-    const response = await axiosInstance.post(`/admin/adduser`, data );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function EditUserAPI(data) {
-  try {
-    const response = await axiosInstance.post(`/admin/edituser`, data );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-
-export async function GetBillsAPI() {
-  try {
-    const response = await axiosInstance.get(`/admin/getbills` );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-
-export async function IsActiveUserAPI(data) {
-  try {
-    const response = await axiosInstance.post(`/admin/getisactiveusers`, data );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export async function IsActiveVendorAPI(data) {
-  try {
-    const response = await axiosInstance.post(`/admin/getisactivevendors`, data );
-
-    return response;
-  } catch (error) {
-    throw error;
-  }
-}
-
-// export async function ForgotPasswordEnterEmailAPI(data) {
-//   try {
-//     const response = await axiosInstanceNoAuth.post(`/auth/forgotpass`,data);
-
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-
-
-// export async function ForgotPasswordEnterOtpAPI(data) {
-//   try {
-//     const response = await axiosInstanceNoAuth.post(
-//       `/auth/forgototpverify`,
-//       data
-//     );
-
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-
-
-
-// export async function ForgotPasswordEnterNewPasswordAPI(data) {
-//   try {
-//     const response = await axiosInstanceNoAuth.post(
-//       `/auth/changepassword`,
-//       data
-//     );
-
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-
-
-
-// export async function SignupAPI(data) {
-//   try {
-//     const response = await axiosInstanceNoAuth.post(
-//       `/auth/signup`,
-//       data
-//     );
-
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-
-
-// export async function SignUpOtpAPI(data) {
-//   try {
-//     const response = await axiosInstanceNoAuth.post(
-//       `/auth/verifysignupotp`,
-//       data
-//     );
-
-//     return response;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-
-
 
 // export async function getCustomerDataAPI() {
 //   try {
@@ -346,5 +239,10 @@ export async function IsActiveVendorAPI(data) {
 //     throw error;
 //   }
 // }
+
+
+
+
+
 
 

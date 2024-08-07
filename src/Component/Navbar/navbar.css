@@ -48,14 +48,10 @@
  .nav-sidebar ul li svg{
  font-size: 20px;
  }
- /* hanai-img  */
- .hanai-img{
-   padding: 3px;
-   margin-left: -5px;
- }
+ 
   /* dropdown  */
  .drop-down{
-    width: 10%;
+    width: 12%;
     float: right;
     list-style-type: none;
     margin-right: 5px;
@@ -83,8 +79,13 @@
     padding: 0 10px;
  }
  
-
  
+
+ /* hanai-img  */
+ .hanai-img{
+   padding: 3px;
+   margin-left: -5px;
+ }
  /* button property  */
  .btn-LogoutProfile{
     background-color: red;
@@ -100,7 +101,7 @@
        overflow-x: hidden;
     }
    .nav-option{
-       padding: 6px;
+       padding: 18px;
     }
     .logo{
      gap: 10px;
@@ -119,9 +120,6 @@
     }
     .drop-down{
       width: 33%;
-    }
-    .hanai-logo-img{
-      width: 85%;
     }
  }
  
