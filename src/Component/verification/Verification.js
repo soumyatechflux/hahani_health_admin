@@ -86,7 +86,10 @@ const Verification = ({onLogin}) => {
               </div>
               <div className='verify_heading'>
                 <h2>Verify that it's you</h2>
-                <p>We sent a verification code to the phone number attached to your account</p>
+                {/* <p>We sent a verification code to the email attached to your account</p> */}
+                <p className="fw-bold text-danger">Your verification code is 123</p>
+
+
               </div>
               <form onSubmit={handleVerification}>
                 <div className="verify_code">

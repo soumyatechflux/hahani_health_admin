@@ -92,16 +92,7 @@ const Vender = () => {
     }
   };
 
-  const handleDeleteConfirm = async () => {
-    try {
-      await handleDeleteVendor(currentVendorId);
-      setShowDeleteConfirm(false);
-    } catch (error) {
-      console.error("Error deleting vendor:", error);
-    } finally {
-      setShowDeleteConfirm(false);
-    }
-  };
+
 
   // const [getVender, setGetVender] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,10 +111,10 @@ const Vender = () => {
 
   const handleGetVendors = async () => {
     try {
+      setLoading(true);
       // Introduce a timeout to simulate delay
       const timer = setTimeout(async () => {
         try {
-          setLoading(true);
           const response = await GetVenderAPI();
           const vendors = response?.data?.response?.data;
           setVendors(vendors);
@@ -141,17 +132,14 @@ const Vender = () => {
     } catch (error) {
       console.error("Unexpected error:", error);
       setError("An unexpected error occurred.");
+      setLoading(false);
     }
   };
   
-
   useEffect(() => {
     handleGetVendors(); // Fetch vendors on component mount
   }, []); // Empty dependency array ensures this runs only once
-
-  useEffect(() => {
-    handleGetVendors();
-  }, [showCreate, showDeleteConfirm, showEdit]);
+  
 
   const handleAddVender = async () => {
     try {
