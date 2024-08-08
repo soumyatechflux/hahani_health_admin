@@ -3,23 +3,16 @@ import { Button, Table } from "react-bootstrap";
 import './bill.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FaFilePdf } from "react-icons/fa6";
-import { useNavigate } from "react-router-dom";
-import PdfModal from './PdfModal/PdfModal'; // Import the PdfModal component
-import { GetBillsAPI } from './../../../api.js'; // Import your API function
+import PdfModal from './PdfModal/PdfModal';
+import { GetBillsAPI } from './../../../api.js';
 import Navbar from '../../Navbar/Navbar';
 import Sidebar from '../../Sidebar/Sidebar';
 
 const Bill = () => {
   const [bills, setBills] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
-  const [showCreate, setShowCreate] = useState(false);
-  const [editData, setEditData] = useState({ id: "", Sr: "", billId: "", amount: "", createdAt: "" });
-  const [newData, setNewData] = useState({ Sr: "", billId: "", amount: "", createdAt: "" });
-  const [showPdf, setShowPdf] = useState(false); // State for showing PDF modal
-  const [pdfUrl, setPdfUrl] = useState(""); // State for storing PDF URL
+  const [showPdf, setShowPdf] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState("");
   const loading=true;
-
-  let history = useNavigate();
 
   // Fetch bills on component mount
   useEffect(() => {
@@ -29,8 +22,8 @@ const Bill = () => {
         const timer = setTimeout(async () => {
           try {
             const response = await GetBillsAPI();
-            console.log("Bill Data", response?.data?.data?.bills);
-            setBills(response?.data?.data?.bills); // Update state with fetched bills data
+       
+            setBills(response?.data?.data?.bills);
           } catch (apiError) {
             console.error("Error fetching bills:", apiError);
             // setError("Failed to fetch bills. Please try again.");
@@ -48,36 +41,13 @@ const Bill = () => {
   
     fetchBills();
   }, []);
-  
-
-  // DELETE Operation
-  const handleDelete = (id) => {
-    setBills(bills.filter((b) => b.id !== id));
-    history(" ");
-  };
-
-  // Handle modal close
-  const handleCloseEdit = () => setShowEdit(false);
-  const handleCloseCreate = () => setShowCreate(false);
-
-  // Handle modal save for create
-  const handleSaveCreate = () => {
-    const newId = bills.length ? Math.max(...bills.map((b) => b.id)) + 1 : 1;
-    setBills([...bills, { id: newId, Sr: newData.Sr, billId: newData.billId, amount: newData.amount, createdAt: newData.createdAt }]);
-    setShowCreate(false);
-    setNewData({ Sr: "", billId: "", amount: "", createdAt: "" });
-  };
-
-  // Open Create Modal
-  const handleCreate = () => setShowCreate(true);
 
   // Open PDF Modal
-  const handleOpenPdf = () => {
-    const url = '/pdf/BillStatement.pdf'; // Path to the PDF file in the public directory
+  const handleOpenPdf = (url) => {
     setPdfUrl(url);
     setShowPdf(true);
   };
-
+  
   return (
     <Fragment>
       <Navbar />
@@ -112,7 +82,7 @@ const Bill = () => {
                     <td className="action-users" style={{ padding: '6px' }}>
                       <Button
                         variant="link"
-                        onClick={handleOpenPdf} // Open PDF modal
+                        onClick={() => handleOpenPdf(item?.actions)}
                       >
                         <FaFilePdf style={{ color: 'red', fontSize: '20px', margin: '7px' }} />
                       </Button>

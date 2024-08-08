@@ -1,112 +1,86 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React,{useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import ScrollToTop from "./ScrollToTop";
-
 import InternetChecker from "./Component/Internet Checker/Internet Checker.js";
-import { BrowserRouter , Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './Component/Pages/Dashboard/Dashboard';
 import User from './Component/Pages/User/User';
 import Bill from './Component/Pages/Bill/Bill';
 import Vendor from './Component/Pages/Vender/Vender';
 import Profile from './Component/Pages/Profile/Profile';
-import SidebarComp from './Component/SidebarComp/SidebarComp';
-import Navbar from './Component/Navbar/Navbar';
 import Login from './Component/Login_verification/login/Login';
 import Verification from './Component/verification/Verification';
-
 import ForgotPasswordFlow from './Component/Login_verification/login/ForgotPassword/ForgotPassword';
-// import PostsTable from './Component/PostTable/PostTable';
-// import Verification from './Component/Login_verification/verification/Verification';
-
-// const MainLayout = ({ children }) => {
-//   const location = useLocation();
-//   const { pathname } = location;
-
-//   // Define the paths where Navbar and Sidebar should not be displayed
-//   const hideNavAndSidebar = ['/', '/signup'];
-//   const hideSidebar = ['/profile', '/signup'];
-
-//   return (
-//     <>
-//       {/* Render Navbar only if the current path is not in hideNavAndSidebar */}
-//       {!hideNavAndSidebar.includes(pathname) && <Navbar />}
-//       {/* Render SidebarComp only if the current path is not in hideNavAndSidebar and not '/profile' */}
-//       {!hideNavAndSidebar.includes(pathname) && !hideSidebar.includes(pathname) && <SidebarComp />}
-//       {children}
-//     </>
-//   );
-// }
 
 function App() {
-
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isUserLoggedIn");
+    // Check login status on component mount
+    const isLoggedIn = localStorage.getItem("isAdminLoggedIn");
     const encryptedToken = localStorage.getItem("encryptedTokenForAdminOfHanaiHealth");
-
+    
     if (isLoggedIn === "true" && encryptedToken) {
       setLoggedIn(true);
     }
   }, []);
 
-  const handleLogin = () => {
-    setLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-  };
-
-
-
-
-
-  const [isOffline, setIsOffline] = useState(false);
-
   useEffect(() => {
+    // Handle offline and online status
     const handleOffline = () => setIsOffline(true);
     const handleOnline = () => setIsOffline(false);
 
-    window.addEventListener('offline', handleOffline);
-    window.addEventListener('online', handleOnline);
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("online", handleOnline);
 
     // Cleanup event listeners on component unmount
     return () => {
-      window.removeEventListener('offline', handleOffline);
-      window.removeEventListener('online', handleOnline);
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("online", handleOnline);
     };
   }, []);
 
+  const handleLogin = () => setLoggedIn(true);
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.removeItem("isAdminLoggedIn");
+    localStorage.removeItem("encryptedTokenForAdminOfHanaiHealth");
+  };
+
   return (
-     <BrowserRouter>
-        
-        <ScrollToTop />
-
-        {isOffline && <InternetChecker />}
-
-    {/* <Router> */}
+    <Router>
       <div className="App">
-      
-        {/* <MainLayout/> */}
-          <Routes>
-            <Route path='/' element={<Login/>}/>
-            {/* <Route path='/verification' element={<Verification/>}/>  */}
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/vendor" element={<Vendor />} />
-            <Route path="/user" element={<User />} />
-            <Route path="/bill" element={<Bill />} />
-            <Route path="/verification" element={<Verification/>}/>
-       
-            <Route path="/forgot-password" element={<ForgotPasswordFlow/>} />
-          
-          </Routes>
-        {/* </MainLayout> */}
+        <ScrollToTop />
+        {isOffline && <InternetChecker />}
+        <Routes>
+          {/* Redirect logged-in users from login-related routes */}
+          {loggedIn && (
+            <>
+              <Route path="/" element={<Navigate to="/dashboard" />} />
+              <Route path="/verification" element={<Navigate to="/dashboard" />} />
+              <Route path="/forgot-password" element={<Navigate to="/dashboard" />} />
+            </>
+          )}
+
+          {/* Protected routes */}
+          <Route path="/profile" element={loggedIn ? <Profile onLogout={handleLogout} /> : <Navigate to="/" />} />
+          <Route path="/dashboard" element={loggedIn ? <Dashboard onLogout={handleLogout} /> : <Navigate to="/" />} />
+          <Route path="/vendor" element={loggedIn ? <Vendor onLogout={handleLogout} /> : <Navigate to="/" />} />
+          <Route path="/user" element={loggedIn ? <User onLogout={handleLogout} /> : <Navigate to="/" />} />
+          <Route path="/bill" element={loggedIn ? <Bill onLogout={handleLogout} /> : <Navigate to="/" />} />
+
+          {/* Public routes */}
+          <Route path="/" element={<Login onLogin={handleLogin} />} />
+          <Route path="/verification" element={<Verification onLogin={handleLogin} />} />
+          <Route path="/forgot-password" element={<ForgotPasswordFlow onLogin={handleLogin} />} />
+
+          {/* Catch-all route */}
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
       </div>
-    {/* </Router> */}
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from "react-bootstrap";
 
 const PdfModal = ({ showPdf, setShowPdf, pdfUrl }) => {
+
   return (
     <Modal show={showPdf} onHide={() => setShowPdf(false)} size="lg" centered>
       <Modal.Header closeButton>
@@ -13,6 +14,7 @@ const PdfModal = ({ showPdf, setShowPdf, pdfUrl }) => {
             src={pdfUrl}
             style={{ width: '100%', height: '600px' }}
             frameBorder="0"
+            title='pdf_key'
           />
         ) : (
           <p>No PDF available</p>

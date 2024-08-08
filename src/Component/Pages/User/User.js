@@ -1,3 +1,4 @@
+
 import React, { Fragment, useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import './user.css';
@@ -22,7 +23,7 @@ const User = () => {
   const [userStatus, setUserStatus] = useState({});
   const [currentUserId, setCurrentUserId] = useState(null);
 
-  const [editData, setEditData] = useState({ id: "", Sr: "", name: "", email: "", password: "", createdAt: "" });
+  const [editData, setEditData] = useState({ id: "", Sr: "", name: "", diseases: "", email: "", password: "", createdAt: "" });
   const [newData, setNewData] = useState({ Sr: "", name: "", email: "", password: "", createdAt: "" });
 
   const history = useNavigate();
@@ -79,8 +80,8 @@ const User = () => {
 
   const handleCancelDelete = () => setShowDelete(false);
 
-  const handleEdit = (id, Sr, name, email, password, createdAt) => {
-    setEditData({ id, Sr, name, email, password, createdAt });
+  const handleEdit = (id, Sr, name, diseases, email, password, createdAt) => {
+    setEditData({ id, Sr, name, diseases, email, password, createdAt });
     setShowEdit(true);
   };
 
@@ -90,7 +91,7 @@ const User = () => {
   const handleSaveEdit = () => {
     setGetUser(
       getUser.map((u) =>
-        u.id === editData.id ? { ...u, Sr: editData.Sr, name: editData.name, email: editData.email, password: editData.password, createdAt: editData.createdAt } : u
+        u.id === editData.id ? { ...u, Sr: editData.Sr, name: editData.name,diseases: editData.diseases, email: editData.email, password: editData.password, createdAt: editData.createdAt } : u
       )
     );
     setShowEdit(false);
@@ -99,16 +100,6 @@ const User = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const formatDate = (dateString) => {
-    if (!dateString) {
-      return 'N/A'; // Placeholder for null or missing date
-    }
-    const date = new Date(dateString);
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
-  };
 
   const handleGetUser = async () => {
     try {
@@ -116,13 +107,13 @@ const User = () => {
       const timer = setTimeout(async () => {
         try {
           const response = await GetUserAPI();
-          const users = response?.data?.data?.users;
+          const users = response?.data?.data;
           // Filter out users with is_deleted status
           const activeUsers = users.filter(user => user.is_deleted === "0");
           setGetUser(activeUsers);
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
-          setError("Failed to fetch data. Please try again.");
+          // setError("Failed to fetch data. Please try again.");
         } finally {
           setLoading(false);
         }
@@ -146,9 +137,9 @@ const User = () => {
   const handleSaveCreate = () => {
     // Assuming the API call was successful and user was added
     const newId = getUser.length ? Math.max(...getUser.map((u) => u.id)) + 1 : 1;
-    setGetUser([...getUser, { id: newId, Sr: newData.Sr, name: newData.name, email: newData.email, password: newData.password, createdAt: newData.createdAt }]);
+    setGetUser([...getUser, { id: newId, Sr: newData.Sr, name: newData.name, diseases: newData.diseases, email: newData.email, password: newData.password, createdAt: newData.createdAt }]);
     setShowCreate(false);
-    setNewData({ Sr: "", name: "", email: "", password: "", createdAt: "" });
+    setNewData({ Sr: "", name: "",diseases:"", email: "", password: "", createdAt: "" });
   };
 
   const handleCreate = () => setShowCreate(true);
@@ -167,11 +158,13 @@ const User = () => {
         <div className="table-padding-right">
           <Table responsive striped bordered hover size="sm" className="table-resp">
             <thead>
+              
               <tr>
                 <th className="col-1 col-md-1">Sr No</th>
-                <th className="col-3 col-md-3">User Name</th>
+                <th className="col-2 col-md-2">User Name</th>
+                <th className="col-2 col-md-2">Disease</th>
                 <th className="col-2 col-md-2">Email</th>
-                <th className="col-3 col-md-3">Created At</th>
+                {/* <th className="col-2 col-md-2">Created At</th> */}
                 <th className="col-3 col-md-3">Actions</th>
               </tr>
             </thead>
@@ -181,12 +174,13 @@ const User = () => {
                   <tr key={item.id}>
                     <td>{index + 1}</td>
                     <td>{item.name}</td>
+                    <td>{item.diseases ? item.diseases : "---"}</td>
                     <td>{item.email}</td>
-                    <td style={{ whiteSpace: 'nowrap' }}>{formatDate(item.created_at)}</td>
+                    {/* <td style={{ whiteSpace: 'nowrap' }}>{formatDate(item.created_at)}</td> */}
                     <td className="action-users">
                       <Button style={{ color: '#454545', width: '30px' }}
                         variant="link"
-                        onClick={() => handleEdit(item.id, item.Sr, item.name, item.email, item.password, item.createdAt)}
+                        onClick={() => handleEdit(item.id, item.Sr, item.name,item.diseases, item.email, item.password, item.createdAt)}
                       >
                         <FaEdit />
                       </Button>
@@ -214,7 +208,7 @@ const User = () => {
                   </tr>
                 ) : (
                   <tr>
-                    <td colSpan="5">No users found.</td>
+                    {/* <td colSpan="5">No users found.</td> */}
                   </tr>
                 )}
             </tbody>
@@ -235,7 +229,7 @@ const User = () => {
         show={showDelete}
         handleCancel={handleCancelDelete}
         handleConfirm={handleDeleteUser}
-        userId={currentUserId} // Pass the user ID to DeleteUserModal
+        userId={currentUserId} 
         handleGetUser={handleGetUser}
       />
 

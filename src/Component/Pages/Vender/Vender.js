@@ -129,7 +129,7 @@ const Vender = () => {
           setVendors(vendors);
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
-          setError("Failed to fetch data. Please try again.");
+          // setError("Failed to fetch data. Please try again.");
         } finally {
           setLoading(false);
         }

@@ -8,41 +8,13 @@ import { toast } from "react-toastify";
 
 import './verification.css';
 
-const Verification = () => {
-  // const [code, setCode] = useState('');
-  // const [error, setError]=useState('');
+const Verification = ({onLogin}) => {
 
-  // const handleVerification = (e) => {
-  //     e.preventDefault();
-
-  //     if (!code) {
-  //         setError('Please enter the verification code');
-  //       } else {
-  //         setError('');
-  //       }
-  // {
-  //     console.log(code,error);
-  // }
-  //     setCode("");
-  // };
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // const handleVerification = (e) => {
-  //   e.preventDefault();
-
-  //   if (!code) {
-  //     setError('Please enter the verification code');
-  //   } else {
-  //     setError('');
-  //     console.log(code);
-  //     // You can add actual verification logic here
-  //     // For now, we just navigate to the /about page
-  //     navigate('/dashboard');
-  //   }
-  // };
   const location = useLocation();
   const email = location.state?.email;
 
@@ -52,8 +24,7 @@ const Verification = () => {
     if (!code) {
       setError("Please enter the verification code");
     } else {
-      // setError("");
-      // navigate("/about");
+
 
       setIsLoading(true);
       try {
@@ -69,7 +40,7 @@ const Verification = () => {
           const encryptedToken = encryptData(token);
 
           localStorage.clear();
-          localStorage.setItem("isUserLoggedIn", true);
+          localStorage.setItem("isAdminLoggedIn", true);
           localStorage.setItem(
             "encryptedTokenForAdminOfHanaiHealth",
             encryptedToken
@@ -78,7 +49,13 @@ const Verification = () => {
           toast.success("OTP verified successfully.");
 
           setError("");
-          navigate("/dashboard");
+          // navigate("/dashboard");
+
+          onLogin && onLogin();
+          if (onLogin) {
+            navigate("/dashboard");
+          }
+
         } else {
           toast.error(
             response?.data?.error_msg ||

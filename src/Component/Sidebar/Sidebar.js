@@ -10,17 +10,18 @@ import { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import hanai_logo from './../images/Modern Initial Font Logo.png';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-
-
-const Sidebar = () => {
+const Sidebar = ({onLogout}) => {
   const [open, setOpen] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
-  // const Menus = ["Profile", "Logout"];
-const Menus=["Logout"];
+  const Menus = ["Logout"];
+
+  // Close dropdown if clicked outside
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setOpen(false);
@@ -34,21 +35,32 @@ const Menus=["Logout"];
     };
   }, []);
 
+  // Handle logout click
   const handleLogoutClick = () => {
     setShowLogoutModal(true);
     setOpen(false); // Close dropdown when modal opens
   };
 
+  // Confirm logout and navigate to login page
   const handleLogoutConfirm = () => {
-    console.log('Clearing local storage...');
-    localStorage.clear();
-    console.log('Navigating to login page...');
-    navigate("/");
+
     setShowLogoutModal(false);
+
+
+    localStorage.clear();
+    
+    onLogout();
+    if (onLogout) {
+      navigate("/");
+    }
+    navigate("/");
+
+    toast.success("Logged out successfully!");
+
+    
   };
 
   return (
-   
     <div className='container-navbar'>
       <nav className='col nav-sidebar bg-light'>
         <div className='hanai-img'>
@@ -57,11 +69,12 @@ const Menus=["Logout"];
 
         {/* Dropdown */}
         <div className='relative' onClick={() => setOpen(!open)}>
-          <IoMdContact   /> <MdOutlineKeyboardArrowDown  style={{width:"25px"}} />
+          <IoMdContact />
+          <MdOutlineKeyboardArrowDown style={{ width: "25px" }} />
         </div>
       </nav>
 
-      {open &&
+      {open && (
         <div ref={dropdownRef} className='drop-down bg-white p-2 w-15 shadow-lg relative top-10'>
           <ul className='dropalign_nav'>
             {Menus.map((menu) => (
@@ -69,10 +82,7 @@ const Menus=["Logout"];
                 onClick={() => {
                   if (menu === "Logout") {
                     handleLogoutClick();
-                  } 
-                  // else if (menu === "Profile") {
-                  //   navigate("/profile");
-                  // }
+                  }
                   setOpen(false); // Close the dropdown in all cases
                 }}
                 className='p-2 text-sm cursor-pointer rounded hover:bg-red-100'
@@ -83,7 +93,7 @@ const Menus=["Logout"];
             ))}
           </ul>
         </div>
-      }
+      )}
 
       {/* Sidebar */}
       <div className='sidebar-content'>

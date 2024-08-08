@@ -1,12 +1,10 @@
-import React,{useState,useEffect} from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { MdDashboardCustomize } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { FaUserCog } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import './sidebarComp.css';
-
-
 
 const SidebarComp = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -19,15 +17,14 @@ const SidebarComp = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-    const location = useLocation();
+  const location = useLocation();
   return (
     <div>
-         <div className='sidebar-content'>
+      <div className='sidebar-content'>
         <div className='sidebar-container'>
           <Link to="/dashboard" className="no-underline">
             <div className={`nav-option option1 ${location.pathname === '/dashboard' ? 'active' : ''}`}>
               <MdDashboardCustomize />
-              {/* <h5 className='h5-sidebar'>Dashboard</h5> */}
               {!isMobile && <span>Dashboard</span>}
             </div>
           </Link>
@@ -54,9 +51,8 @@ const SidebarComp = () => {
           </Link>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
 
-export default SidebarComp
+export default SidebarComp;

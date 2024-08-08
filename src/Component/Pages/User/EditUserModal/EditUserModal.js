@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Modal, Form, Button, Alert } from "react-bootstrap";
 import { EditUserAPI, GetUserAPIById } from './../../../../api.js'; // Adjust the import path
@@ -95,6 +96,17 @@ const EditUserModal = ({ show, handleClose, userId, editData, setEditData, onUse
               placeholder="Enter Name"
               value={editData.name || ''}
               onChange={(e) => setEditData({ ...editData, name: e.target.value })}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formNameEdit">
+            <Form.Label>Disease</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Disease"
+              readOnly
+              value= {editData?.diseases}
+              onChange={(e) => setEditData({ ...editData, diseases: e.target.value })}
+              disabled
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formEmailEdit">
