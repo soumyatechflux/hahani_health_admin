@@ -191,7 +191,7 @@ if(response?.data?.response === true && response?.data?.data.length !== 0){
                 ? getUser.filter((user) => user?.is_deleted !== "1").map((item, index) => (
                   <tr key={item.id}>
                     <td>{index + 1}</td>
-                    <td>{item.name}</td>
+                    <td>{item.firstname+" "+item.lastname}</td>
                     <td>{item.diseases ? item.diseases : "---"}</td>
                     <td>{item.email}</td>
                     {/* <td style={{ whiteSpace: 'nowrap' }}>{formatDate(item.created_at)}</td> */}
