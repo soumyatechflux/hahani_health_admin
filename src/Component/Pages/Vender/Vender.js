@@ -39,18 +39,36 @@ const Vender = ({onLogout}) => {
   };
 
   const handleConfirmStatusChange = async () => {
+    setLoading(true); // Optional: if you have a loading state
+
     try {
       const response = await IsActiveVendorAPI({ id: currentVendorId });
       if (response.status === 200) {
-        toggleStatus(currentVendorId);
-        handleGetVendors(); // Fetch the updated user list
+        toggleStatus(currentVendorId); // Ensure this function is defined
+        await handleGetVendors(); // Ensure this function is defined and returns a promise if needed
+      } else {
       }
     } catch (err) {
       console.error("Failed to change Vendor status:", err.message);
+
     } finally {
-      setShowConfirm(false);
+      setLoading(false); // Optional: Reset loading state
+      setShowConfirm(false); // Ensure this function is defined and handles the confirmation dialog
     }
   };
+
+  useEffect(() => {
+    // Delay the call to handleConfirmStatusChange
+    const timer = setTimeout(() => {
+      if (showConfirm && currentVendorId !== null) {
+        handleConfirmStatusChange();
+      }
+    }, 10); // 10 ms delay
+
+    // Cleanup the timer if the component unmounts before the timeout completes
+    return () => clearTimeout(timer);
+  }, [showConfirm, currentVendorId]); // Dependencies to trigger the effect
+
 
   const handleCancelChange = () => {
     setShowConfirm(false);
@@ -119,7 +137,8 @@ const Vender = ({onLogout}) => {
 
           if(response?.data?.response?.data.length !== 0 && response?.data?.response?.response === true ){
           const vendors = response?.data?.response?.data;
-          setVendors(vendors)
+          setVendors(vendors);
+          return;
         }
 
 
