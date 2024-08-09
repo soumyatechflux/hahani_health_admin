@@ -22,7 +22,8 @@ const Bill = ({onLogout}) => {
         const timer = setTimeout(async () => {
           try {
             const response = await GetBillsAPI();
-            setBills(response?.data?.data?.bills);
+            if(response?.data?.data?.bills.length !== 0 && response?.data?.response === true ){  setBills(response?.data?.data?.bills)}
+          
           } catch (apiError) {
             console.error("Error fetching bills:", apiError);
           } finally {
