@@ -100,8 +100,8 @@ const User = ({onLogout}) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
   const handleGetUser = async () => {
+    setLoading(true);
     try {
       // Introduce a timeout to simulate delay
       const timer = setTimeout(async () => {
@@ -113,26 +113,40 @@ const User = ({onLogout}) => {
           setGetUser(activeUsers);
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
-          // setError("Failed to fetch data. Please try again.");
+          setError("Failed to fetch data. Please try again.");
         } finally {
           setLoading(false);
         }
       }, 10); // Simulated delay of 10 milliseconds
-  
+
       // Cleanup the timer if the component unmounts before the timeout completes
       return () => clearTimeout(timer);
-  
+
     } catch (error) {
       console.error("Unexpected error:", error);
       setError("An unexpected error occurred.");
       setLoading(false); // Ensure loading state is reset
     }
   };
-  
+
+  useEffect(() => {
+    // Call handleGetUser on component mount
+    handleGetUser();
+
+    // Cleanup function for useEffect
+    return () => {
+      // Any additional cleanup if necessary
+    };
+  }, []);
+
+
 
   useEffect(() => {
     handleGetUser(); // Fetch users on component mount
   }, [showDelete, showEdit]);
+
+
+
 
   const handleSaveCreate = () => {
     // Assuming the API call was successful and user was added

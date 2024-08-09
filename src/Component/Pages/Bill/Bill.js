@@ -14,33 +14,40 @@ const Bill = ({onLogout}) => {
   const [pdfUrl, setPdfUrl] = useState("");
   const loading=true;
 
-  // Fetch bills on component mount
   useEffect(() => {
     const fetchBills = async () => {
+      // setLoading(true);
       try {
         // Introduce a timeout to simulate delay
         const timer = setTimeout(async () => {
           try {
             const response = await GetBillsAPI();
-       
             setBills(response?.data?.data?.bills);
           } catch (apiError) {
             console.error("Error fetching bills:", apiError);
-            // setError("Failed to fetch bills. Please try again.");
+          } finally {
+            // setLoading(false);
           }
         }, 10); // 10ms delay
   
         // Cleanup the timer if the component unmounts before the timeout completes
         return () => clearTimeout(timer);
-  
+
       } catch (error) {
         console.error("Unexpected error:", error);
         // setError("An unexpected error occurred.");
+        // setLoading(false); // Ensure loading state is reset
       }
     };
-  
+
     fetchBills();
+
+    // Cleanup function for useEffect
+    return () => {
+      // Any additional cleanup if necessary
+    };
   }, []);
+
 
   // Open PDF Modal
   const handleOpenPdf = (url) => {

@@ -120,26 +120,30 @@ const Vender = ({onLogout}) => {
           setVendors(vendors);
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
-          // setError("Failed to fetch data. Please try again.");
+          setError("Failed to fetch data. Please try again.");
         } finally {
           setLoading(false);
         }
       }, 10); // Simulated delay of 10 milliseconds
-  
+
       // Cleanup the timer if the component unmounts before the timeout completes
       return () => clearTimeout(timer);
-  
     } catch (error) {
       console.error("Unexpected error:", error);
       setError("An unexpected error occurred.");
       setLoading(false);
     }
   };
-  
+
   useEffect(() => {
-    handleGetVendors(); // Fetch vendors on component mount
-  }, []); // Empty dependency array ensures this runs only once
-  
+    // Call handleGetVendors on component mount
+    handleGetVendors();
+
+    // Cleanup function for useEffect
+    return () => {
+      // Any additional cleanup if necessary
+    };
+  }, []);
 
   const handleAddVender = async () => {
     try {
