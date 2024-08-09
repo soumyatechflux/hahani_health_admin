@@ -5,10 +5,10 @@ import Sidebar from '../../Sidebar/Sidebar';
 import Navbar from '../../Navbar/Navbar';
 
 
-const Dashboard = () => {
+const Dashboard = ({onLogout}) => {
   return (
     <>
-    <Navbar/><Sidebar/>
+    <Navbar onLogout={onLogout}/><Sidebar onLogout={onLogout}/>
     <div className='row' style={{marginTop:'10%',display:'flex', justifyContent:'space-evenly', alignItems:'center' }}>
       <div className='col-md-2 col-sm-6 col-12'>
       <div className='cell'>

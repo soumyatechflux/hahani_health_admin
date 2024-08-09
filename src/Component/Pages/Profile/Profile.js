@@ -8,7 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../Navbar/Navbar';
 
-const Profile = () => {
+const Profile = ({onLogout}) => {
   const navigate = useNavigate();
   const [profileImage, setProfileImage] = useState(null);
 
@@ -29,7 +29,7 @@ const Profile = () => {
 
   return (
    <>
-    <Navbar/>
+    <Navbar onLogout={onLogout}/>
     <div className="container-fluid Profile-Container">
       <div className="row justify-content-center">
         <div className="col-md-8 col-lg-6 profile-target">

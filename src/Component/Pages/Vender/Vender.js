@@ -13,7 +13,7 @@ import AddVendorModal from "./AddVendorModal/AddVendorModal.js";
 import VendorStatusModal from "./VendorStatusModal/VendorStatusModal.js";
 import VendorDeleteModal from "./VendorDeleteModal/VendorDeleteModal.js";
 
-const Vender = () => {
+const Vender = ({onLogout}) => {
   const [vendors, setVendors] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
@@ -170,8 +170,7 @@ const Vender = () => {
 
   return (
     <Fragment>
-      <Navbar />
-      <Sidebar />
+      <Navbar onLogout={onLogout}/><Sidebar onLogout={onLogout}/>
       <div className="container container-vender" style={{ marginTop: '2.6%' }}>
         <div className="d-flex align-items-center justify-content-between top-margin-heading">
           <h1 className="text-class">Vendor Details</h1>

@@ -14,7 +14,7 @@ import EditUserModal from "./EditUserModal/EditUserModal.js";
 import DeleteUserModal from "./DeleteUserModal/DeleteUserModal.js";
 import ConfirmUserStatusModal from "./ConfirmUserStatusModal/ConfirmUserStatusModal.js";
 
-const User = () => {
+const User = ({onLogout}) => {
   const [getUser, setGetUser] = useState([]);
   const [showEdit, setShowEdit] = useState(false);
   const [showCreate, setShowCreate] = useState(false);
@@ -146,7 +146,7 @@ const User = () => {
 
   return (
     <Fragment>
-      <Navbar /><Sidebar />
+        <Navbar onLogout={onLogout}/><Sidebar onLogout={onLogout}/>
       <div className="container container-Users" style={{ marginTop: '2.6%' }}>
         <div className="d-flex align-items-center justify-content-between top-margin-heading">
           <h1 className="text-class">User Details</h1>

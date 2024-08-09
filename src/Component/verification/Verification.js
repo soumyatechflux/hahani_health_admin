@@ -39,7 +39,7 @@ const Verification = ({onLogin}) => {
           const token = response?.data?.data?.token;
           const encryptedToken = encryptData(token);
 
-          localStorage.clear();
+          // localStorage.clear();
           localStorage.setItem("isAdminLoggedIn", true);
           localStorage.setItem(
             "encryptedTokenForAdminOfHanaiHealth",

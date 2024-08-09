@@ -8,7 +8,7 @@ import { GetBillsAPI } from './../../../api.js';
 import Navbar from '../../Navbar/Navbar';
 import Sidebar from '../../Sidebar/Sidebar';
 
-const Bill = () => {
+const Bill = ({onLogout}) => {
   const [bills, setBills] = useState([]);
   const [showPdf, setShowPdf] = useState(false);
   const [pdfUrl, setPdfUrl] = useState("");
@@ -50,8 +50,7 @@ const Bill = () => {
   
   return (
     <Fragment>
-      <Navbar />
-      <Sidebar />
+     <Navbar onLogout={onLogout}/><Sidebar onLogout={onLogout}/>
       <div className="container container-Bil" style={{ marginTop: '2.6%' }}>
         <div className="d-flex align-items-center justify-content-between top-margin-heading">
           <h1 className="text-class">Bill Details</h1>

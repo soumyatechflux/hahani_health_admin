@@ -43,6 +43,7 @@ function App() {
   }, []);
 
   const handleLogin = () => setLoggedIn(true);
+  
   const handleLogout = () => {
     setLoggedIn(false);
     localStorage.removeItem("isAdminLoggedIn");

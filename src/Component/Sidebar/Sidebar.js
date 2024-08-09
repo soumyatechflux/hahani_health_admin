@@ -47,7 +47,10 @@ const Sidebar = ({onLogout}) => {
     setShowLogoutModal(false);
 
 
-    localStorage.clear();
+    // localStorage.clear();
+
+    localStorage.removeItem("isAdminLoggedIn");
+    localStorage.removeItem("encryptedTokenForAdminOfHanaiHealth");
     
     onLogout();
     if (onLogout) {
