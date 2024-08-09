@@ -116,8 +116,13 @@ const Vender = ({onLogout}) => {
       const timer = setTimeout(async () => {
         try {
           const response = await GetVenderAPI();
+
+          if(response?.data?.response?.data.length !== 0 && response?.data?.response?.response === true ){
           const vendors = response?.data?.response?.data;
-          setVendors(vendors);
+          setVendors(vendors)
+        }
+
+
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
           setError("Failed to fetch data. Please try again.");

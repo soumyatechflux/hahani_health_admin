@@ -107,10 +107,14 @@ const User = ({onLogout}) => {
       const timer = setTimeout(async () => {
         try {
           const response = await GetUserAPI();
+
+if(response?.data?.response === true && response?.data?.data.length !== 0){
           const users = response?.data?.data;
-          // Filter out users with is_deleted status
-          const activeUsers = users.filter(user => user.is_deleted === "0");
+          const activeUsers = users.filter(user => user?.is_deleted === "0");
           setGetUser(activeUsers);
+
+        }
+
         } catch (apiError) {
           console.error("Error fetching data:", apiError);
           setError("Failed to fetch data. Please try again.");
